@@ -1,4 +1,19 @@
 <?php
+/*
+
+This service is used to search for media.  It will return
+IdMediaInfo, MediaName, Summary, Active, StoryLine, IdMediaType, IdLanguage,
+IdMotionPictureRating, AverageUserRating, MediaYear, LastAltered, MediaLength,
+CoverArtLocation
+
+The cover art location is a link to the location of the cover art and must be
+joined with the base url.
+
+If you want to stream a video you pass the IdMediaInfo id to the 
+media_files service.
+
+*/
+
 require_once("connection_info.php");
 require("security.php");
 
@@ -13,7 +28,7 @@ try{
 	$dbh = get_connection();
 	
 	$stmt = $dbh->prepare('CALL MediaInfoSLikeCmd(:pMediaName)');
-	$stmt->bindParam(':pMediaName', $email, PDO::PARAM_STR, 200); 
+	$stmt->bindParam(':pMediaName', $search, PDO::PARAM_STR, 200); 
 	
 	$stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

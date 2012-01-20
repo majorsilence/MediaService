@@ -7,9 +7,9 @@ VALUES (NULL, 'A Second Name', 'This is the second summary.', true, 'She retreat
 
 -- Next the MediaFiles are inserted and linked to MediaInfo data
 INSERT INTO `ms_project2`.`MediaFiles` (`IdMediaFiles`, `IdMediaInfo`, `FileLocation`, `VideoBitrate`, `MediaFileTypeCode`, `MediaLength`) 
-VALUES (Null, 1, 'video/big_buck_bunny_480p.webm', 5000, 'VIDEO', 6000);
+VALUES (Null, 2, 'video/big_buck_bunny_480p.webm', 5000, 'VIDEO', 6000);
 INSERT INTO `ms_project2`.`MediaFiles` (`IdMediaFiles`, `IdMediaInfo`, `FileLocation`, `VideoBitrate`, `MediaFileTypeCode`, `MediaLength`) 
-VALUES (Null, 1, 'coverart/big_buck_bunny.jpg', 0, 'COVERART', 0);
+VALUES (Null, 2, 'coverart/big_buck_bunny.jpg', 0, 'COVERART', 0);
 
 
 
