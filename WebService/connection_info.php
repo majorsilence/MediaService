@@ -11,7 +11,7 @@ function get_connection()
 	$username = 'password';
 	$password = 'username';
 	$database = 'databaseName';
-	$host = 'host=ipAddressOrWebAddressOfServer';
+	$host = 'ipAddressOrWebAddressOfServer';
 
 	$dsn = 'mysql:dbname=' . $database . ';host='. $host;
 	
