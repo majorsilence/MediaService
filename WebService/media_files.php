@@ -30,8 +30,8 @@ try{
 
 	$dbh = get_connection();
 	
-	$stmt = $dbh->prepare('CALL MediaFilesSCmdSingle(:pIdMediaFiles)');
-	$stmt->bindParam(':pIdMediaFiles', $search, PDO::PARAM_INT); 
+	$stmt = $dbh->prepare('CALL MediaFilesSCmd(:pIdMediaInfo)');
+	$stmt->bindParam(':pIdMediaInfo', $search, PDO::PARAM_INT); 
 	
 	$stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
