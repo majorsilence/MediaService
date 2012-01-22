@@ -26,9 +26,12 @@ namespace MediaServiceClient
 
         private void SetDownloadInfo()
         {
-            LibMediaServiceCommon.Downloads.Instance.IPAddress = textBaseAddress.Text;
+            LibMediaServiceCommon.Downloads.Instance.ServiceAddress = textBaseAddress.Text;
             LibMediaServiceCommon.Downloads.Instance.UserName = textUserName.Text;
             LibMediaServiceCommon.Downloads.Instance.Password = textPassword.Text;
+           
+
+
         }
 
         private void btnPlayer_Click(object sender, EventArgs e)

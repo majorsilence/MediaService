@@ -99,7 +99,7 @@ namespace MediaServiceClient
 					
 					// ***********************
 
-                    string imageLocation = movie.CoverArtLocation.Trim();
+                    string imageLocation = LibMediaServiceCommon.Downloads.Instance.MediaAddress + "/" + movie.CoverArtLocation.Trim();
 
                     carousel1.Add(imageLocation, movieOneStoryLine, movieOneName, mediaId);
 		            

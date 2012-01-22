@@ -33,7 +33,7 @@ namespace LibMediaServiceCommon
             category = LibMediaServiceCommon.Base64.EncodeTo64(category);
 
 
-            string searchUrl = string.Format("{0}/media_info.php/?search={1}", Downloads.Instance.IPAddress,
+            string searchUrl = string.Format("{0}/media_info.php/?search={1}", Downloads.Instance.ServiceAddress,
                  mediaName);
 
             if (category.Trim() != "")
@@ -62,7 +62,7 @@ namespace LibMediaServiceCommon
         public string Search(long mediaId)
         {
 
-            string searchUrl = string.Format("{0}/media_files.php/?search={1}", Downloads.Instance.IPAddress, 
+            string searchUrl = string.Format("{0}/media_files.php?search={1}", Downloads.Instance.ServiceAddress, 
                 mediaId);
             string data = LibMediaServiceCommon.Downloads.Instance.GetData(searchUrl);
 
@@ -72,7 +72,7 @@ namespace LibMediaServiceCommon
             string resultURL = "";
             foreach (DTO.MediaFiles item in a)
             {
-                if (item.MediaFileTypeCode == "video")
+                if (item.MediaFileTypeCode == "VIDEO")
                 {
                     // TODO: Fix so it returns best matching bitrate for internet bandwidth.
                     resultURL = item.FileLocation;

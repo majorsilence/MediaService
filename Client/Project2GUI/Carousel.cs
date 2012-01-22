@@ -208,7 +208,7 @@ namespace MediaServiceClient
                         throw new Exception("No media files to search for.  MediaId is set to -1.");
                     }
 
-                    string url = search.Search(v.MediaInfoId);
+                    string url = LibMediaServiceCommon.Downloads.Instance.MediaAddress + "/" + search.Search(v.MediaInfoId);
                     MediaPlayer.Player dlg = new MediaPlayer.Player(url, true, true, true);
                     dlg.ShowDialog();
                 }

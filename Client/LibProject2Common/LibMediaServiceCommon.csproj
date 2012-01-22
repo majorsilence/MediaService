@@ -81,6 +81,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="DataDirectory.cs" />
     <Compile Include="Downloads.cs" />
+    <Compile Include="DTO\MediaAddress.cs" />
     <Compile Include="DTO\MediaFiles.cs" />
     <Compile Include="DTO\MediaInfo.cs" />
     <Compile Include="Hashes.cs" />

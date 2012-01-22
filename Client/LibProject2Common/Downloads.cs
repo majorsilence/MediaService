@@ -16,8 +16,6 @@ namespace LibMediaServiceCommon
     /// <remarks>The Downloads.UserName and Downloads.Password properties must be set before using this class.</remarks>
     public sealed class Downloads
     {
-        public string IPAddress {get; set;}
-
         private static volatile Downloads instance;
         private static object syncRoot = new Object();
 
@@ -26,7 +24,6 @@ namespace LibMediaServiceCommon
 
         public string UserName { get; set; }
         public string Password { get; set; }
-
 
         private Downloads() 
         {
@@ -48,6 +45,48 @@ namespace LibMediaServiceCommon
                 }
 
                 return instance;
+            }
+        }
+
+        private string _serviceAddress = null;
+        public string ServiceAddress
+        {
+            get
+            {
+                return _serviceAddress;
+            }
+            set
+            {
+                _serviceAddress = value;
+            }
+        }
+
+        private string _baseMediaAddress = null;
+        public string MediaAddress
+        {
+            get
+            {
+                if (_baseMediaAddress == null)
+                {
+                    if (_serviceAddress == null)
+                    {
+                        throw new MediaServiceException("Downloads.ServiceAddress not set.  This must be set before using Downloads.MediaAddress");
+                    }
+
+                    string path = ServiceAddress + "/media_address.php";
+                    string data = GetData(path);
+                    List<LibMediaServiceCommon.DTO.MediaAddress> addressList =
+                        ServiceStack.Text.JsonSerializer.DeserializeFromString
+                        <List<LibMediaServiceCommon.DTO.MediaAddress>>(data);
+
+
+                    _baseMediaAddress = addressList[0].Address;
+                }
+                return _baseMediaAddress;
+            }
+            set 
+            { 
+                _baseMediaAddress = value;
             }
         }
 
