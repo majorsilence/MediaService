@@ -71,8 +71,57 @@ namespace MediaServiceClient
             MoveItem(Direction.LEFT);
         }
 
-        public void Add(string imgUrl, string summary, string name, long mediaInfoId)
+        public void Add(string category)
         {
+            AsyncMethodCaller caller = new AsyncMethodCaller(InternalAdd);
+            IAsyncResult result = caller.BeginInvoke(category, null, null);
+        }
+
+        private delegate void AsyncMethodCaller(string value);
+        private void InternalAdd(string category)
+        {
+            // Running on background thread
+
+            if (category == "TEST")
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    this.BeginInvoke(new Action<Image, string, string, long>(InternalAdd), 
+                        MediaServiceClient.Properties.Resources.no_image, "Test", "Test", -1);
+                }
+
+                return;
+            }
+
+
+            LibMediaServiceCommon.SearchMedia search = new LibMediaServiceCommon.SearchMedia();
+
+            // For now to test return the search (max out at 20).
+            List<LibMediaServiceCommon.DTO.MediaInfo> searchResults = search.Search("", category);
+
+
+
+            foreach (LibMediaServiceCommon.DTO.MediaInfo movie in searchResults)
+            {
+                string movieOneName = movie.MediaName;
+                string movieOneStoryLine = movie.StoryLine.Trim();
+                long mediaId = movie.IdMediaInfo;
+
+                // ***********************
+
+                string imageLocation = LibMediaServiceCommon.Downloads.Instance.MediaAddress + "/" + movie.CoverArtLocation.Trim();
+
+                this.BeginInvoke(new Action<string, string, string, long>(InternalAdd),
+                    imageLocation, movieOneStoryLine, movieOneName, mediaId);
+
+            }
+
+        }
+
+        private void InternalAdd(string imgUrl, string summary, string name, long mediaInfoId)
+        {
+            // Running on background thread
+
             Image cacheImg = LibMediaServiceCommon.LocalCache.GetCachedImage(mediaInfoId);
             if (imgUrl.ToLower() == "unknown")
             {
@@ -94,51 +143,20 @@ namespace MediaServiceClient
                     LibMediaServiceCommon.LocalCache.SaveCacheImage(cacheImg, mediaInfoId);
                 }
 
-                Add(cacheImg, summary, name, mediaInfoId);
+                this.BeginInvoke(new Action<Image, string, string, long>(InternalAdd),
+                    cacheImg, summary, name, mediaInfoId);
             }
             else
             {
-                Add(cacheImg, summary, name, mediaInfoId);
+                this.BeginInvoke(new Action<Image, string, string, long>(InternalAdd),
+                    cacheImg, summary, name, mediaInfoId);
             }
 
             // TODO: fix so async download can be used.  It currently only works if called from the main gui thread.
             //LibProject2Common.Downloads.Instance.WebImageAsync(imgUrl, mediaInfoId);
             //LibProject2Common.Downloads.Instance.ImageDownloadFinished += new LibProject2Common.Project2EventHandler(Instance_ImageDownloadFinished);
 
-        }
-
-        /// <summary>
-        /// Once the image has been downloaded assign it to the control whos matches the IdMediaInfo.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Instance_ImageDownloadFinished(object sender, LibMediaServiceCommon.MediaServiceEvent e)
-        {
-
-            foreach (Control ctrl in this._controls)
-            {
-                if (ctrl is CarouselItems)
-                {
-                    CarouselItems c = (CarouselItems)ctrl;
-                    VideoInfo v = (VideoInfo)ctrl.Tag;
-
-                    if (v.MediaInfoId == e.Value)
-                    {
-
-                        if (e.ImageValue == null)
-                        {
-                            c.Image = (Image)MediaServiceClient.Properties.Resources.no_image;
-                        }
-                        else
-                        {
-                            c.Image = e.ImageValue;
-                        }
-                        return;
-                    }
-                }
-            }
-
-        }
+        }       
 
         /// <summary>
         /// Add a new control to the carousel.
@@ -146,8 +164,9 @@ namespace MediaServiceClient
         /// <param name="img"></param>
         /// <param name="summary"></param>
         /// <param name="name"></param>
-        public void Add(Image img, string summary, string name, long mediaInfoId)
+        private void InternalAdd(Image img, string summary, string name, long mediaInfoId)
         {
+            // running on gui thread
             CarouselItems ctrl = new CarouselItems();
             ctrl.Image = img;
             ctrl.Width = Carousel.ImageWidth;

@@ -157,7 +157,7 @@ namespace LibMediaServiceCommon
         {
             System.Net.WebRequest _webRequst;
 
-            if (urlAddress.ToLower() == "unknown")
+            if (urlAddress.ToLower().EndsWith("unknown"))
             {
                 return false;
             }

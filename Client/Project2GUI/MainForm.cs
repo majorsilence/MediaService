@@ -14,9 +14,7 @@ namespace MediaServiceClient
     public partial class MainForm : Form
     {
         private VerticalList carouselLayoutPanel;
-        private int rowCount = 0;
-
-
+   
         public MainForm()
         {
             InitializeComponent();
@@ -64,49 +62,9 @@ namespace MediaServiceClient
                 carousel1.Width = carouselLayoutPanel.Width;
                 carousel1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 
-                if (category == "TEST")
-                {
-                    for (int i = 0; i < 20; i++)
-                    {
-                        carousel1.Add(MediaServiceClient.Properties.Resources.no_image, "Test", "Test", -1);
-
-
-                    }
-
-                    carouselLayoutPanel.AddCarousel(carousel1);
-
-                   // carousel1.Height = carousel1.Height;
-                   // carouselLayoutPanel.AddCarousel(carousel1);
-                   
-                    rowCount++;
-
-                    return;
-                }
-
-
-                LibMediaServiceCommon.SearchMedia search = new LibMediaServiceCommon.SearchMedia();
-                
-                // For now to test return the search (max out at 20).
-                List<LibMediaServiceCommon.DTO.MediaInfo> searchResults = search.Search("", category);
-
-
-
-                foreach (LibMediaServiceCommon.DTO.MediaInfo movie in searchResults)
-                {
-                    string movieOneName = movie.MediaName;
-                    string movieOneStoryLine = movie.StoryLine.Trim();
-                    long mediaId = movie.IdMediaInfo;
-                    
-                    // ***********************
-
-                    string imageLocation = LibMediaServiceCommon.Downloads.Instance.MediaAddress + "/" + movie.CoverArtLocation.Trim();
-
-                    carousel1.Add(imageLocation, movieOneStoryLine, movieOneName, mediaId);
-                    
-                }
-
                 carouselLayoutPanel.AddCarousel(carousel1);
-                
+                carousel1.Add(category);
+        
             }
             catch(Exception ex)
             {
