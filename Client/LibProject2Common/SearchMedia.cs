@@ -10,24 +10,24 @@ using System.Xml;
 
 namespace LibMediaServiceCommon
 {
-	public class SearchMedia
-	{
-		public SearchMedia ()
-		{
-		}
-		
-		
-		/// <summary>
-		/// Returns a maximum of 20 videos. 
-		/// </summary>
-		/// <param name="mediaName">
-		/// A <see cref="System.String"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="DataTable"/>
-		/// </returns>
+    public class SearchMedia
+    {
+        public SearchMedia ()
+        {
+        }
+        
+        
+        /// <summary>
+        /// Returns a maximum of 20 videos. 
+        /// </summary>
+        /// <param name="mediaName">
+        /// A <see cref="System.String"/>
+        /// </param>
+        /// <returns>
+        /// A <see cref="DataTable"/>
+        /// </returns>
         public List<DTO.MediaInfo> Search(string mediaName, string category)
-		{
+        {
 
             mediaName = LibMediaServiceCommon.Base64.EncodeTo64(mediaName);
             category = LibMediaServiceCommon.Base64.EncodeTo64(category);
@@ -46,7 +46,7 @@ namespace LibMediaServiceCommon
 
             return a;
             
-		}
+        }
 
 
 
@@ -84,6 +84,6 @@ namespace LibMediaServiceCommon
             return resultURL;
         }
 
-	}
+    }
 }
 

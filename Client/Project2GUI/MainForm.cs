@@ -85,33 +85,33 @@ namespace MediaServiceClient
 
 
                 LibMediaServiceCommon.SearchMedia search = new LibMediaServiceCommon.SearchMedia();
-				
+                
                 // For now to test return the search (max out at 20).
                 List<LibMediaServiceCommon.DTO.MediaInfo> searchResults = search.Search("", category);
 
 
 
                 foreach (LibMediaServiceCommon.DTO.MediaInfo movie in searchResults)
-				{
-					string movieOneName = movie.MediaName;
+                {
+                    string movieOneName = movie.MediaName;
                     string movieOneStoryLine = movie.StoryLine.Trim();
                     long mediaId = movie.IdMediaInfo;
-					
-					// ***********************
+                    
+                    // ***********************
 
                     string imageLocation = LibMediaServiceCommon.Downloads.Instance.MediaAddress + "/" + movie.CoverArtLocation.Trim();
 
                     carousel1.Add(imageLocation, movieOneStoryLine, movieOneName, mediaId);
-		            
-				}
+                    
+                }
 
                 carouselLayoutPanel.AddCarousel(carousel1);
                 
-			}
-			catch(Exception ex)
-			{
-				LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
-			}
+            }
+            catch(Exception ex)
+            {
+                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+            }
             
         }
 

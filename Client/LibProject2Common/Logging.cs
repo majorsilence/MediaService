@@ -1,12 +1,12 @@
 using System;
 namespace LibMediaServiceCommon
 {
-	/// <summary>
-	/// This class is used to log application messages, warnings,
-	/// and errors.
-	/// </summary>
-	public class Logging
-	{
+    /// <summary>
+    /// This class is used to log application messages, warnings,
+    /// and errors.
+    /// </summary>
+    public class Logging
+    {
         private static volatile Logging instance;
         private static object syncRoot = new Object();
 
@@ -44,8 +44,8 @@ namespace LibMediaServiceCommon
             }
         }
 
-		
-		public string MajorSilenceLocalAppDataDirectory
+        
+        public string MajorSilenceLocalAppDataDirectory
         {
             get
             {
@@ -56,7 +56,7 @@ namespace LibMediaServiceCommon
             }
         }
 
-		
+        
         public void WriteLine(string msg)
         {
             WriteLine(msg, "UNKNOWN");
@@ -80,6 +80,6 @@ namespace LibMediaServiceCommon
         }
 
     
-	}
+    }
 }
 

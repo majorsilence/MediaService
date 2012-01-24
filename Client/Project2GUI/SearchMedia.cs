@@ -9,30 +9,30 @@ using System.Xml;
 
 namespace Project2GUI
 {
-	public class SearchMedia
-	{
-		public SearchMedia ()
-		{
-		}
-		
-		
-		/// <summary>
-		/// Returns a maximum of 20 videos. 
-		/// </summary>
-		/// <param name="mediaName">
-		/// A <see cref="System.String"/>
-		/// </param>
-		/// <returns>
-		/// A <see cref="DataTable"/>
-		/// </returns>
-		public DataTable Search(string mediaName, string category)
-		{
+    public class SearchMedia
+    {
+        public SearchMedia ()
+        {
+        }
+        
+        
+        /// <summary>
+        /// Returns a maximum of 20 videos. 
+        /// </summary>
+        /// <param name="mediaName">
+        /// A <see cref="System.String"/>
+        /// </param>
+        /// <returns>
+        /// A <see cref="DataTable"/>
+        /// </returns>
+        public DataTable Search(string mediaName, string category)
+        {
 
             mediaName = LibProject2Common.Base64.EncodeTo64(mediaName);
             category = LibProject2Common.Base64.EncodeTo64(category);
 
 
-			string searchUrl = string.Format("http://127.0.0.1:8080/MediaInfo/?search={0}", mediaName);
+            string searchUrl = string.Format("http://127.0.0.1:8080/MediaInfo/?search={0}", mediaName);
 
             if (category.Trim() != "")
             {
@@ -41,11 +41,11 @@ namespace Project2GUI
 
             string data = LibProject2Common.Downloads.Instance.Client.DownloadString(searchUrl);
       
-			DataSet ds = new DataSet();	
-			ds.ReadXml(new System.IO.StringReader(data));
-					
-			return ds.Tables[0];		
-		}
+            DataSet ds = new DataSet();	
+            ds.ReadXml(new System.IO.StringReader(data));
+        
+            return ds.Tables[0];
+        }
 
 
 
@@ -83,6 +83,6 @@ namespace Project2GUI
             return resultURL;
         }
 
-	}
+    }
 }
 
