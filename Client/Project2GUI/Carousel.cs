@@ -71,6 +71,11 @@ namespace MediaServiceClient
             MoveItem(Direction.LEFT);
         }
 
+        /// <summary>
+        /// Load a category of videos into this carousel.
+        /// Everything calling the webservice and downloading of coverart is run in a background thread.
+        /// </summary>
+        /// <param name="category"></param>
         public void Add(string category)
         {
             AsyncMethodCaller caller = new AsyncMethodCaller(InternalAdd);
@@ -151,10 +156,6 @@ namespace MediaServiceClient
                 this.BeginInvoke(new Action<Image, string, string, long>(InternalAdd),
                     cacheImg, summary, name, mediaInfoId);
             }
-
-            // TODO: fix so async download can be used.  It currently only works if called from the main gui thread.
-            //LibProject2Common.Downloads.Instance.WebImageAsync(imgUrl, mediaInfoId);
-            //LibProject2Common.Downloads.Instance.ImageDownloadFinished += new LibProject2Common.Project2EventHandler(Instance_ImageDownloadFinished);
 
         }       
 

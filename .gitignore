@@ -58,3 +58,7 @@
 /Client/Project2GUI/Properties/Resources.resources
 /Client/MediaServiceWinformClient.suo
 /Database/LotsOfVideo.mwb.bak
+/Client/LibProject2Common/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/Client/LibProject2Common/obj/x86/Debug/LibMediaServiceCommon.csproj.FileListAbsolute.txt
+/Client/LibProject2Common/obj/x86/Debug/LibMediaServiceCommon.dll
+/Client/LibProject2Common/obj/x86/Debug/LibMediaServiceCommon.pdb
