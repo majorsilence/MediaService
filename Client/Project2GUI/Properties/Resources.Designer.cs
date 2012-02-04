@@ -60,6 +60,20 @@ namespace MediaServiceClient.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ajax_loader {
+            get {
+                object obj = ResourceManager.GetObject("ajax-loader", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ajax_loader1 {
+            get {
+                object obj = ResourceManager.GetObject("ajax-loader1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap audio_volume_medium {
             get {
                 object obj = ResourceManager.GetObject("audio_volume_medium", resourceCulture);

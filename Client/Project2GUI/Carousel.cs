@@ -63,12 +63,26 @@ namespace MediaServiceClient
 
         private void btnMoveRight_Click(object sender, EventArgs e)
         {
-            MoveItem(Direction.RIGHT);
+            try
+            {
+                MoveItem(Direction.RIGHT);
+            }
+            catch (Exception ex)
+            {
+                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+            }
         }
 
         private void btnMoveLeft_Click(object sender, EventArgs e)
         {
-            MoveItem(Direction.LEFT);
+            try
+            {
+                MoveItem(Direction.LEFT);
+            }
+            catch (Exception ex)
+            {
+                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+            }
         }
 
         /// <summary>
@@ -94,7 +108,7 @@ namespace MediaServiceClient
                     this.BeginInvoke(new Action<Image, string, string, long>(InternalAdd), 
                         MediaServiceClient.Properties.Resources.no_image, "Test", "Test", -1);
                 }
-
+                this.BeginInvoke((MethodInvoker)delegate { pictureBox1.Visible = false; });
                 return;
             }
 
@@ -120,6 +134,8 @@ namespace MediaServiceClient
                     imageLocation, movieOneStoryLine, movieOneName, mediaId);
 
             }
+
+            this.BeginInvoke((MethodInvoker)delegate { pictureBox1.Visible = false; });
 
         }
 
