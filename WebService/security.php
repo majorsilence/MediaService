@@ -10,11 +10,19 @@ function do_login_basic(){
 	$username = null;
 	$password = null;
 
+        //print_r(getallheaders());
+        
 	if (isset($_SERVER['PHP_AUTH_USER'])) {
 		$username = $_SERVER['PHP_AUTH_USER'];
 		$password = $_SERVER['PHP_AUTH_PW'];
 	} 
 	elseif (isset($_SERVER['HTTP_AUTHORIZATION'])){ 
+            
+                if( strlen($_SERVER['HTTP_AUTHORIZATION'])  == 0)
+                {
+                    prompt_login('No username and password entered.');
+                }
+            
 		// php in cgi mode.  using .htaccess file rewrite
 		list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) =
 			explode(':', base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));
