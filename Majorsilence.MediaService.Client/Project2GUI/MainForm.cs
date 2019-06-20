@@ -8,8 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Threading;
+using Majorsilence.MediaService.Client.Common;
 
-namespace MediaServiceClient
+namespace Majorsilence.MediaService.Client.WinGui
 {
     public partial class MainForm : Form
     {
@@ -68,7 +69,7 @@ namespace MediaServiceClient
             }
             catch(Exception ex)
             {
-                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+                Logging.Instance.WriteLine(ex);
             }
             
         }

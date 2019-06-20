@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LibMediaServiceCommon
+namespace Majorsilence.MediaService.Client.Common
 {
     public class MediaServiceException : Exception
     {

@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace LibMediaServiceCommon
+namespace Majorsilence.MediaService.Client.Common
 {
     /// <summary>
     /// This classes contains funtions with working with various hashes.

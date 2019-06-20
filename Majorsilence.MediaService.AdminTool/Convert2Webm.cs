@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 
-namespace AdminTool
+namespace Majorsilence.MediaService.AdminTool
 {
 
     /// <summary>

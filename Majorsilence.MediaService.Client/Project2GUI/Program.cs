@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Majorsilence.MediaService.Client.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace MediaServiceClient
+namespace Majorsilence.MediaService.Client.WinGui
 {
     static class Program
     {
@@ -13,8 +14,8 @@ namespace MediaServiceClient
         [STAThread]
         static void Main()
         {
-            LibMediaServiceCommon.Downloads.Instance.UserName = MediaServiceClient.Properties.Settings.Default.UserName;
-            LibMediaServiceCommon.Downloads.Instance.Password = LibMediaServiceCommon.Base64.DecodeFrom64(MediaServiceClient.Properties.Settings.Default.Password);
+            Downloads.Instance.UserName = WinGui.Properties.Settings.Default.UserName;
+            Downloads.Instance.Password = Base64.DecodeFrom64(WinGui.Properties.Settings.Default.Password);
 
 
             Application.EnableVisualStyles();

@@ -5,12 +5,12 @@ using System.Text;
 using System.Drawing;
 
 
-namespace LibMediaServiceCommon
+namespace Majorsilence.MediaService.Client.Common
 {
     public class LocalCache
     {
 
-        private static string cacheDirectory = System.IO.Path.Combine(LibMediaServiceCommon.DataDirectory.MajorSilenceMediaServiceLocalAppDataDirectory, "CoverArtCache");
+        private static string cacheDirectory = System.IO.Path.Combine(DataDirectory.MajorSilenceMediaServiceLocalAppDataDirectory, "CoverArtCache");
 
         public static void SaveCacheImage(Image img, long IdMediaInfo)
         {

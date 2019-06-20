@@ -8,8 +8,8 @@
     <ProjectGuid>{278DB643-5468-418B-8281-7AD10E6AFF5E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MediaServiceClient</RootNamespace>
-    <AssemblyName>MediaServiceClient</AssemblyName>
+    <RootNamespace>Majorsilence.MediaService.Client.WinGui</RootNamespace>
+    <AssemblyName>Majorsilence.MediaService.Client.WinGui</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -37,7 +37,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>MediaServiceClient.Program</StartupObject>
+    <StartupObject>Majorsilence.MediaService.Client.WinGui.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -192,9 +192,9 @@
     <None Include="Resources\ajax-loader1.gif" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibProject2Common\LibMediaServiceCommon.csproj">
+    <ProjectReference Include="..\LibProject2Common\Majorsilence.MediaService.Client.Common.csproj">
       <Project>{7f673f2a-4e20-47cb-b3b2-ca33178e5c25}</Project>
-      <Name>LibMediaServiceCommon</Name>
+      <Name>Majorsilence.MediaService.Client.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

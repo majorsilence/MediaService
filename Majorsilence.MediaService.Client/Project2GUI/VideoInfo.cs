@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MediaServiceClient
+namespace Majorsilence.MediaService.Client.WinGui
 {
     class VideoInfo
     {

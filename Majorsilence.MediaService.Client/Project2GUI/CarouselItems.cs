@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MediaServiceClient
+namespace Majorsilence.MediaService.Client.WinGui
 {
     class CarouselItems : PictureBox
     {

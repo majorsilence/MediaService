@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Windows.Forms;
 
-namespace MediaServiceClient
+namespace Majorsilence.MediaService.Client.WinGui
 {
     public class MovieBox : FlowLayoutPanel
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Majorsilence.MediaService.Client.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace MediaServiceClient
+namespace Majorsilence.MediaService.Client.WinGui
 {
     public partial class TestForm : Form
     {
@@ -15,7 +16,7 @@ namespace MediaServiceClient
         {
             InitializeComponent();
 
-            mplayerPath.Text = MediaServiceClient.Properties.Settings.Default.MPlayerPath;
+            mplayerPath.Text = WinGui.Properties.Settings.Default.MPlayerPath;
 
         }
 
@@ -26,9 +27,9 @@ namespace MediaServiceClient
 
         private void SetDownloadInfo()
         {
-            LibMediaServiceCommon.Downloads.Instance.ServiceAddress = textBaseAddress.Text;
-            LibMediaServiceCommon.Downloads.Instance.UserName = textUserName.Text;
-            LibMediaServiceCommon.Downloads.Instance.Password = textPassword.Text;
+            Downloads.Instance.ServiceAddress = textBaseAddress.Text;
+            Downloads.Instance.UserName = textUserName.Text;
+            Downloads.Instance.Password = textPassword.Text;
            
 
 
@@ -44,7 +45,7 @@ namespace MediaServiceClient
             }
             catch (Exception ex)
             {
-                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+                Logging.Instance.WriteLine(ex);
             }
         }
 
@@ -57,7 +58,7 @@ namespace MediaServiceClient
             }
             catch (Exception ex)
             {
-                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+                Logging.Instance.WriteLine(ex);
             }
         }
 
@@ -71,14 +72,14 @@ namespace MediaServiceClient
             }
             catch (Exception ex)
             {
-                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+                Logging.Instance.WriteLine(ex);
             }
         }
 
         private void SaveMPlayerPath_Click(object sender, EventArgs e)
         {
-            MediaServiceClient.Properties.Settings.Default.MPlayerPath = mplayerPath.Text.Trim();
-            MediaServiceClient.Properties.Settings.Default.Save();
+            WinGui.Properties.Settings.Default.MPlayerPath = mplayerPath.Text.Trim();
+            WinGui.Properties.Settings.Default.Save();
         }
 
         private void buttonSetDownload_Click(object sender, EventArgs e)

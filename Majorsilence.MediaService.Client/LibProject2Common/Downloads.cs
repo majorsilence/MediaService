@@ -7,7 +7,7 @@ using System.IO;
 using System.Net;
 
 
-namespace LibMediaServiceCommon
+namespace Majorsilence.MediaService.Client.Common
 {
     /// <summary>
     /// Once centrilized class for downloading items/webpages/xml/images from the Project2 server.
@@ -75,9 +75,9 @@ namespace LibMediaServiceCommon
 
                     string path = ServiceAddress + "/media_address.php";
                     string data = GetData(path);
-                    List<LibMediaServiceCommon.DTO.MediaAddress> addressList =
+                    List<DTO.MediaAddress> addressList =
                         ServiceStack.Text.JsonSerializer.DeserializeFromString
-                        <List<LibMediaServiceCommon.DTO.MediaAddress>>(data);
+                        <List<DTO.MediaAddress>>(data);
 
 
                     _baseMediaAddress = addressList[0].Address;

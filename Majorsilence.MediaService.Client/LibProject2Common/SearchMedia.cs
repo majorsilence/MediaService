@@ -4,11 +4,11 @@ using System.Data;
 using System.IO;
 using System.Net;
 using System.Collections.Generic;
-using LibMediaServiceCommon;
+using Majorsilence.MediaService.Client.Common;
 using System.Xml;
 
 
-namespace LibMediaServiceCommon
+namespace Majorsilence.MediaService.Client.Common
 {
     public class SearchMedia
     {
@@ -29,8 +29,8 @@ namespace LibMediaServiceCommon
         public List<DTO.MediaInfo> Search(string mediaName, string category)
         {
 
-            mediaName = LibMediaServiceCommon.Base64.EncodeTo64(mediaName);
-            category = LibMediaServiceCommon.Base64.EncodeTo64(category);
+            mediaName = Base64.EncodeTo64(mediaName);
+            category = Base64.EncodeTo64(category);
 
 
             string searchUrl = string.Format("{0}/media_info.php/?search={1}", Downloads.Instance.ServiceAddress,
@@ -41,7 +41,7 @@ namespace LibMediaServiceCommon
                 searchUrl += string.Format("&category={0}", category);
             }
 
-            string data = LibMediaServiceCommon.Downloads.Instance.GetData(searchUrl);
+            string data = Downloads.Instance.GetData(searchUrl);
             List<DTO.MediaInfo> a = ServiceStack.Text.JsonSerializer.DeserializeFromString<List<DTO.MediaInfo>>(data);
 
             return a;
@@ -64,7 +64,7 @@ namespace LibMediaServiceCommon
 
             string searchUrl = string.Format("{0}/media_files.php?search={1}", Downloads.Instance.ServiceAddress, 
                 mediaId);
-            string data = LibMediaServiceCommon.Downloads.Instance.GetData(searchUrl);
+            string data = Downloads.Instance.GetData(searchUrl);
 
             List<DTO.MediaFiles> a = ServiceStack.Text.JsonSerializer.DeserializeFromString<List<DTO.MediaFiles>>(data);
 

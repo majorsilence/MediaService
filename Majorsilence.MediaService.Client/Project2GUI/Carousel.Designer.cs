@@ -1,4 +1,4 @@
-﻿namespace MediaServiceClient
+﻿namespace Majorsilence.MediaService.Client.WinGui
 {
     partial class Carousel
     {
@@ -82,7 +82,7 @@
             this.btnMoveLeft.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnMoveLeft.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnMoveLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMoveLeft.Image = global::MediaServiceClient.Properties.Resources.RightLeft;
+            this.btnMoveLeft.Image = global::Majorsilence.MediaService.Client.WinGui.Properties.Resources.RightLeft;
             this.btnMoveLeft.Location = new System.Drawing.Point(714, 21);
             this.btnMoveLeft.Name = "btnMoveLeft";
             this.btnMoveLeft.Size = new System.Drawing.Size(35, 119);
@@ -96,7 +96,7 @@
             this.btnMoveRight.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btnMoveRight.FlatAppearance.BorderSize = 0;
             this.btnMoveRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMoveRight.Image = global::MediaServiceClient.Properties.Resources.RightLeft;
+            this.btnMoveRight.Image = global::Majorsilence.MediaService.Client.WinGui.Properties.Resources.RightLeft;
             this.btnMoveRight.Location = new System.Drawing.Point(-1, 21);
             this.btnMoveRight.Name = "btnMoveRight";
             this.btnMoveRight.Size = new System.Drawing.Size(35, 119);
@@ -106,7 +106,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::MediaServiceClient.Properties.Resources.ajax_loader1;
+            this.pictureBox1.Image = global::Majorsilence.MediaService.Client.WinGui.Properties.Resources.ajax_loader1;
             this.pictureBox1.Location = new System.Drawing.Point(0, 7);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(103, 106);

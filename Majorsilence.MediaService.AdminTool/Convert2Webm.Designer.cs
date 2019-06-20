@@ -1,4 +1,4 @@
-﻿namespace AdminTool
+﻿namespace Majorsilence.MediaService.AdminTool
 {
     partial class Convert2Webm
     {

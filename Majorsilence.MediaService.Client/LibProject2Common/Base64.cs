@@ -1,5 +1,5 @@
 using System;
-namespace LibMediaServiceCommon
+namespace Majorsilence.MediaService.Client.Common
 {
     public class Base64
     {

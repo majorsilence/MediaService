@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Majorsilence.MediaService.WebService", "Majorsilence.MediaService.WebService\Majorsilence.MediaService.WebService.csproj", "{A7475B99-DBB7-435F-99D7-86D5D28BF831}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminTool", "Majorsilence.MediaService.AdminTool\AdminTool.csproj", "{1C60A981-4AC6-4356-A34B-F70CD4875AF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Majorsilence.MediaService.AdminTool", "Majorsilence.MediaService.AdminTool\Majorsilence.MediaService.AdminTool.csproj", "{1C60A981-4AC6-4356-A34B-F70CD4875AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibMediaServiceCommon", "Majorsilence.MediaService.Client\LibProject2Common\LibMediaServiceCommon.csproj", "{7F673F2A-4E20-47CB-B3B2-CA33178E5C25}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Majorsilence.MediaService.Client.Common", "Majorsilence.MediaService.Client\LibProject2Common\Majorsilence.MediaService.Client.Common.csproj", "{7F673F2A-4E20-47CB-B3B2-CA33178E5C25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaServiceClient", "Majorsilence.MediaService.Client\Project2GUI\MediaServiceClient.csproj", "{278DB643-5468-418B-8281-7AD10E6AFF5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Majorsilence.MediaService.Client.WinGui", "Majorsilence.MediaService.Client\Project2GUI\Majorsilence.MediaService.Client.WinGui.csproj", "{278DB643-5468-418B-8281-7AD10E6AFF5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿namespace MediaServiceClient
+﻿namespace Majorsilence.MediaService.Client.WinGui
 {
     partial class VerticalList
     {
@@ -43,7 +43,7 @@
             this.btnMoveDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnMoveDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnMoveDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMoveDown.Image = global::MediaServiceClient.Properties.Resources.RightLeft;
+            this.btnMoveDown.Image = global::Majorsilence.MediaService.Client.WinGui.Properties.Resources.RightLeft;
             this.btnMoveDown.Location = new System.Drawing.Point(0, 528);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(740, 30);
@@ -61,7 +61,7 @@
             this.btnMoveUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
             this.btnMoveUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Black;
             this.btnMoveUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMoveUp.Image = global::MediaServiceClient.Properties.Resources.RightLeft;
+            this.btnMoveUp.Image = global::Majorsilence.MediaService.Client.WinGui.Properties.Resources.RightLeft;
             this.btnMoveUp.Location = new System.Drawing.Point(6, 3);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(740, 27);

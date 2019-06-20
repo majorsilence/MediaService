@@ -1,4 +1,4 @@
-﻿namespace MediaServiceClient
+﻿namespace Majorsilence.MediaService.Client.WinGui
 {
     partial class UserSetup
     {

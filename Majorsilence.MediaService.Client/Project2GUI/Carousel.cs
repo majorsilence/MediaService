@@ -6,8 +6,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Majorsilence.MediaService.Client.Common;
 
-namespace MediaServiceClient
+namespace Majorsilence.MediaService.Client.WinGui
 {
     public partial class Carousel : UserControl
     {
@@ -69,7 +70,7 @@ namespace MediaServiceClient
             }
             catch (Exception ex)
             {
-                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+                Logging.Instance.WriteLine(ex);
             }
         }
 
@@ -81,7 +82,7 @@ namespace MediaServiceClient
             }
             catch (Exception ex)
             {
-                LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+                Logging.Instance.WriteLine(ex);
             }
         }
 
@@ -106,21 +107,21 @@ namespace MediaServiceClient
                 for (int i = 0; i < 20; i++)
                 {
                     this.BeginInvoke(new Action<Image, string, string, long>(InternalAdd), 
-                        MediaServiceClient.Properties.Resources.no_image, "Test", "Test", -1);
+                        WinGui.Properties.Resources.no_image, "Test", "Test", -1);
                 }
                 this.BeginInvoke((MethodInvoker)delegate { pictureBox1.Visible = false; });
                 return;
             }
 
 
-            LibMediaServiceCommon.SearchMedia search = new LibMediaServiceCommon.SearchMedia();
+            SearchMedia search = new SearchMedia();
 
             // For now to test return the search (max out at 20).
-            List<LibMediaServiceCommon.DTO.MediaInfo> searchResults = search.Search("", category);
+            List<Common.DTO.MediaInfo> searchResults = search.Search("", category);
 
 
 
-            foreach (LibMediaServiceCommon.DTO.MediaInfo movie in searchResults)
+            foreach (Common.DTO.MediaInfo movie in searchResults)
             {
                 string movieOneName = movie.MediaName;
                 string movieOneStoryLine = movie.StoryLine.Trim();
@@ -128,7 +129,7 @@ namespace MediaServiceClient
 
                 // ***********************
 
-                string imageLocation = LibMediaServiceCommon.Downloads.Instance.MediaAddress + "/" + movie.CoverArtLocation.Trim();
+                string imageLocation = Downloads.Instance.MediaAddress + "/" + movie.CoverArtLocation.Trim();
 
                 this.BeginInvoke(new Action<string, string, string, long>(InternalAdd),
                     imageLocation, movieOneStoryLine, movieOneName, mediaId);
@@ -143,25 +144,25 @@ namespace MediaServiceClient
         {
             // Running on background thread
 
-            Image cacheImg = LibMediaServiceCommon.LocalCache.GetCachedImage(mediaInfoId);
+            Image cacheImg = LocalCache.GetCachedImage(mediaInfoId);
             if (imgUrl.ToLower() == "unknown")
             {
-                cacheImg = MediaServiceClient.Properties.Resources.no_image;
+                cacheImg = WinGui.Properties.Resources.no_image;
             }
 
            
 
             if (cacheImg == null)
             {
-                cacheImg = LibMediaServiceCommon.Downloads.Instance.WebImage(imgUrl);
+                cacheImg = Downloads.Instance.WebImage(imgUrl);
                 if (cacheImg == null)
                 {
-                    cacheImg = MediaServiceClient.Properties.Resources.no_image;
+                    cacheImg = WinGui.Properties.Resources.no_image;
                 }
                 else
                 {
 
-                    LibMediaServiceCommon.LocalCache.SaveCacheImage(cacheImg, mediaInfoId);
+                    LocalCache.SaveCacheImage(cacheImg, mediaInfoId);
                 }
 
                 this.BeginInvoke(new Action<Image, string, string, long>(InternalAdd),
@@ -237,20 +238,20 @@ namespace MediaServiceClient
 
                     CarouselItems b = (CarouselItems)sender;
                     VideoInfo v = (VideoInfo)b.Tag;
-                    LibMediaServiceCommon.SearchMedia search = new LibMediaServiceCommon.SearchMedia();
+                    SearchMedia search = new SearchMedia();
 
                     if (v.MediaInfoId == -1)
                     {
                         throw new Exception("No media files to search for.  MediaId is set to -1.");
                     }
 
-                    string url = LibMediaServiceCommon.Downloads.Instance.MediaAddress + "/" + search.Search(v.MediaInfoId);
+                    string url = Downloads.Instance.MediaAddress + "/" + search.Search(v.MediaInfoId);
                     MediaPlayer.Player dlg = new MediaPlayer.Player(url, true, true, true);
                     dlg.ShowDialog();
                 }
                 catch (Exception ex)
                 {
-                    LibMediaServiceCommon.Logging.Instance.WriteLine(ex);
+                    Logging.Instance.WriteLine(ex);
                 }
                 this.Parent.Show();
             }
