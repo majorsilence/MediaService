@@ -28,9 +28,11 @@ namespace LibMediaServiceCommon
             }
 
            
-            Image tmep = new Bitmap(img); // work around an error where using the image passed in causes an exception
-            tmep.Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
-            tmep.Dispose();
+            using(Image tmep = new Bitmap(img)){
+                // work around an error where using the image passed in causes an exception
+                tmep.Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
+                tmep.Dispose();
+            }
         }
 
         public static Image GetCachedImage(long IdMediaInfo)

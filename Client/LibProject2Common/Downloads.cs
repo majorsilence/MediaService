@@ -25,7 +25,7 @@ namespace LibMediaServiceCommon
         public string UserName { get; set; }
         public string Password { get; set; }
 
-        private Downloads() 
+        private Downloads()
         {
         }
 
@@ -84,8 +84,8 @@ namespace LibMediaServiceCommon
                 }
                 return _baseMediaAddress;
             }
-            set 
-            { 
+            set
+            {
                 _baseMediaAddress = value;
             }
         }
@@ -103,29 +103,30 @@ namespace LibMediaServiceCommon
                 return null;
             }
 
-            WebClient client = new WebClient();
-            client.Headers.Add("user-agent", headerValue);
-            NetworkCredential cred = new NetworkCredential(this.UserName, this.Password);
-            client.Credentials = cred;
-
-            if (this.UserName.Trim() == "" || this.Password.Trim() == "")
+            using (WebClient client = new WebClient())
             {
-                throw new MediaServiceException("Username or password not set");
+                client.Headers.Add("user-agent", headerValue);
+                NetworkCredential cred = new NetworkCredential(this.UserName, this.Password);
+                client.Credentials = cred;
+
+                if (this.UserName.Trim() == "" || this.Password.Trim() == "")
+                {
+                    throw new MediaServiceException("Username or password not set");
+                }
+
+
+                byte[] img = client.DownloadData(url);
+                //Image retValue;
+
+
+                using (MemoryStream ms = new MemoryStream(img, 0, img.Length))
+                {
+
+                    ms.Write(img, 0, img.Length);
+
+                    return Image.FromStream(ms, true, true);
+                }
             }
-
-
-            byte[] img = client.DownloadData(url);
-            //Image retValue;
-
-
-            using (MemoryStream ms = new MemoryStream(img, 0, img.Length)) 
-            { 
-
-                ms.Write(img, 0, img.Length); 
-
-                return Image.FromStream(ms, true, true); 
-            }
-            
 
 
             // return retValue;
@@ -134,17 +135,19 @@ namespace LibMediaServiceCommon
 
         public string GetData(string url)
         {
-            WebClient client = new WebClient();
-            client.Headers.Add("user-agent", headerValue);
-            NetworkCredential cred = new NetworkCredential(this.UserName, this.Password);
-            client.Credentials = cred;
-
-            if (this.UserName.Trim() == "" || this.Password.Trim() == "")
+            using (WebClient client = new WebClient())
             {
-                throw new MediaServiceException("Username or password not set");
-            }
+                client.Headers.Add("user-agent", headerValue);
+                NetworkCredential cred = new NetworkCredential(this.UserName, this.Password);
+                client.Credentials = cred;
 
-            return client.DownloadString(url);
+                if (this.UserName.Trim() == "" || this.Password.Trim() == "")
+                {
+                    throw new MediaServiceException("Username or password not set");
+                }
+
+                return client.DownloadString(url);
+            }
         }
 
         /// <summary>
@@ -166,7 +169,7 @@ namespace LibMediaServiceCommon
             {
                 System.Uri url = new System.Uri(urlAddress);
 
-                _webRequst = System.Net.WebRequest.Create(urlAddress); 
+                _webRequst = System.Net.WebRequest.Create(urlAddress);
                 NetworkCredential cred = new NetworkCredential(this.UserName, this.Password);
                 _webRequst.Credentials = cred;
 
@@ -175,8 +178,10 @@ namespace LibMediaServiceCommon
                     throw new MediaServiceException("Username or password not set");
                 }
 
-                System.Net.WebResponse resp = _webRequst.GetResponse();
-                resp.Close();
+                using (System.Net.WebResponse resp = _webRequst.GetResponse())
+                {
+                    resp.Close();
+                }
                 _webRequst = null;
             }
             catch (Exception ex)
@@ -187,7 +192,7 @@ namespace LibMediaServiceCommon
             }
 
             return true;
-            
+
         }
 
     }

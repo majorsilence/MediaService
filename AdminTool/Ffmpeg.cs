@@ -11,19 +11,21 @@ namespace AdminTool
 
         public bool Convert(string filenameIn, string fileNameOut, int videoBitrateKilobits, int audioBitrateKilobits, string size)
         {
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo.FileName = "ffmpeg.exe";
-            p.StartInfo.Arguments = string.Format("-i \"{0}\" -s {1} -vb {2}k -ab {3}k -threads 4 \"{4}\"", filenameIn, size, videoBitrateKilobits, audioBitrateKilobits, fileNameOut);
+            using (System.Diagnostics.Process p = new System.Diagnostics.Process())
+            {
+                p.StartInfo.FileName = "ffmpeg.exe";
+                p.StartInfo.Arguments = string.Format("-i \"{0}\" -s {1} -vb {2}k -ab {3}k -threads 4 \"{4}\"", filenameIn, size, videoBitrateKilobits, audioBitrateKilobits, fileNameOut);
 
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.ErrorDialog = false;
-            p.OutputDataReceived += HandleMediaPlayerOutputDataReceived;
-            p.ErrorDataReceived += HandleMediaPlayerErrorDataReceived;
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.ErrorDialog = false;
+                p.OutputDataReceived += HandleMediaPlayerOutputDataReceived;
+                p.ErrorDataReceived += HandleMediaPlayerErrorDataReceived;
 
-            p.Start();
+                p.Start();
 
-            p.WaitForExit();
+                p.WaitForExit();
+            }
             return false;
         }
 
