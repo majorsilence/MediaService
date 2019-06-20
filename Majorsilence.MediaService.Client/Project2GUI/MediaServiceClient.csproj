@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MediaServiceClient</RootNamespace>
     <AssemblyName>MediaServiceClient</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -33,13 +34,35 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>MediaServiceClient.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibMplayerCommon">
-      <HintPath>..\References\LibMplayerCommon.dll</HintPath>
+    <Reference Include="LibImages, Version=1.2.6408.15190, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MPlayerControl.1.2.0\lib\net45\LibImages.dll</HintPath>
+    </Reference>
+    <Reference Include="LibMplayerCommon, Version=1.2.6408.15190, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MPlayerControl.1.2.0\lib\net45\LibMplayerCommon.dll</HintPath>
     </Reference>
     <Reference Include="MediaPlayer">
       <HintPath>..\References\MediaPlayer.exe</HintPath>
@@ -120,6 +143,7 @@
       <DependentUpon>VerticalList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,20 +182,21 @@
     <None Include="Resources\stop.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibProject2Common\LibMediaServiceCommon.csproj">
-      <Project>{7F673F2A-4E20-47CB-B3B2-CA33178E5C25}</Project>
-      <Name>LibMediaServiceCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\no_image.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MediaPlayer.exe" />
     <Content Include="Resources\ajax-loader.gif" />
+    <Content Include="WpfMPlayer.exe" />
     <None Include="Resources\ajax-loader2.gif" />
     <None Include="Resources\ajax-loader1.gif" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\LibProject2Common\LibMediaServiceCommon.csproj">
+      <Project>{7f673f2a-4e20-47cb-b3b2-ca33178e5c25}</Project>
+      <Name>LibMediaServiceCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
