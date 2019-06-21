@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Majorsilence.DataAccess\Majorsilence.DataAccess.csproj" />
+    <ProjectReference Include="..\Majorsilence.MediaService.RepoInterfaces\Majorsilence.MediaService.RepoInterfaces.csproj" />
+  </ItemGroup>
+
 </Project>
