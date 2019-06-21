@@ -20,10 +20,27 @@ namespace Majorsilence.MediaService.WebService.Controllers
         }
 
         // GET api/values
+        /// <summary>
+        /// This service is used to search for media.  It will return
+        /// IdMediaInfo, MediaName, Summary, Active, StoryLine, IdMediaType, IdLanguage,
+        /// IdMotionPictureRating, AverageUserRating, MediaYear, LastAltered, MediaLength,
+        /// CoverArtLocation
+        ///
+        /// The cover art location is a link to the location of the cover art and must be
+        /// joined with the base url.
+        ///
+        /// If you want to stream a video you pass the IdMediaInfo id to the
+        /// /api/mediafileinfo?search=id service.
+        /// </summary>
+        /// <example>
+        /// Call /api/mediasearch?search=Your search terms
+        /// </example>
+        /// <param name="search"></param>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MediaInfoSearch>>> Get(string searchTerm)
+        public async Task<ActionResult<IEnumerable<MediaInfoSearch>>> Get(string search)
         {
-            var results = await repo.SearchAsync(searchTerm);
+            var results = await repo.SearchAsync(search);
             return results.ToList();
         }
 
