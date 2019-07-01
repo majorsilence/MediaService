@@ -192,7 +192,7 @@
     <None Include="Resources\ajax-loader1.gif" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LibProject2Common\Majorsilence.MediaService.Client.Common.csproj">
+    <ProjectReference Include="..\Common\Majorsilence.MediaService.Client.Common.csproj">
       <Project>{7f673f2a-4e20-47cb-b3b2-ca33178e5c25}</Project>
       <Name>Majorsilence.MediaService.Client.Common</Name>
     </ProjectReference>
