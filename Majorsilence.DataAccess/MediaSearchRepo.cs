@@ -17,7 +17,9 @@ namespace Majorsilence.DataAccess
         {
             return this.WithConnectionAsync(cn =>
             {
-                return cn.QueryAsync<MediaInfoSearch>("MediaInfoSLikeCmd", new { pMediaName  = searchTerm});
+                return cn.QueryAsync<MediaInfoSearch>("MediaInfoSLikeCmd",
+                    new { pMediaName = searchTerm }, 
+                    commandType: System.Data.CommandType.StoredProcedure);
             });
         }
     }
